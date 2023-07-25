@@ -6,4 +6,6 @@ const RegistroEntradaController = require('../../controllers/RegistroEntradaCont
 
 router.get("/", RegistroEntradaController.getAllRegistroEntrada);
 
+router.get("/:idRegistroEntrada", RegistroEntradaController.getOneRegistroEntrada);
+
 module.exports = router

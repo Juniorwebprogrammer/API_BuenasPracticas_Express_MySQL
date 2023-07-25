@@ -5,6 +5,12 @@ const getAllDepartamento = async () => {
     return allDepartamento;
 }
 
+const getOneDepartamento = async (idDepartamento) => {
+    const oneDepartamento = await DepartamentoDB.getOneDepartamento(idDepartamento)
+    return oneDepartamento
+}
+
 module.exports = {
-    getAllDepartamento
+    getAllDepartamento,
+    getOneDepartamento
 }

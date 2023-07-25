@@ -6,6 +6,15 @@ const getAllUsuarios = async (req,res) => {
     res.status(200).send(allUsuarios)
 }
 
+const getOneUsuario = async (req,res) => {
+    const {idUsuario} = req.params;
+
+    const oneUsuario = await UsuariosServices.getOneUsuario(idUsuario);
+
+    res.status(200).send(oneUsuario);
+}
+
 module.exports = {
-    getAllUsuarios
+    getAllUsuarios,
+    getOneUsuario
 }

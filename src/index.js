@@ -22,9 +22,12 @@ const v1historicoRouter = require('./v1/routes/historico')
 // Configuraciones
 
 
+
 // Middelwares
 
 app.use(morgan('dev'));
+
+app.use(express.json()); // body-parser
 
 // Routes
 

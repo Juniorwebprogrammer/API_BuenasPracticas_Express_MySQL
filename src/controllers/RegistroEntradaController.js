@@ -6,6 +6,15 @@ const getAllRegistroEntrada = async (req,res) => {
     res.status(200).send(allRegistroEntrada);
 }
 
+const getOneRegistroEntrada = async (req,res) => {
+    const {idRegistroEntrada} = req.params;
+
+    const oneRegistroEntrada = await RegistroEntradaServices.getOneRegistroEntrada(idRegistroEntrada);
+
+    res.status(200).send(oneRegistroEntrada);
+}
+
 module.exports = {
-    getAllRegistroEntrada
+    getAllRegistroEntrada,
+    getOneRegistroEntrada
 }

@@ -29,6 +29,33 @@ const getAllRegistrosEntrada = async () => {
     
 }
 
+const getOneRegistroEntrada = async (idRegistroEntrada) => {
+    let result;
+
+    let query = 'Select * from registroEntrada where idRegistroEntrada = ?';
+
+    try {
+        result = await sendQuery(query);
+        result = JSON.stringify(result, null, 2);
+        function sendQuery(query) {
+            return new Promise((resolve, reject) => {
+                mysql.query(query, [idRegistroEntrada], (err, result) => {
+                    if(err){
+                        reject(err)
+                    } else {
+                        resolve(result)
+                    }
+                })
+            })
+        }
+    } catch (error) {
+        console.log(error)
+    }
+
+    return result
+}
+
 module.exports = {
-    getAllRegistrosEntrada
+    getAllRegistrosEntrada,
+    getOneRegistroEntrada
 }

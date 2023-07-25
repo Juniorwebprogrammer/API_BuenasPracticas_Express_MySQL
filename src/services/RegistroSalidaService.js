@@ -5,6 +5,13 @@ const getAllRegistrosSalida = async () => {
     return allRegistrosSalida;
 }
 
+const getOneRegistroSalida = async (idRegistroSalida) => {
+    const oneRegistroSalida = await RegistroSalidaDB.getOneRegistroSalida(idRegistroSalida);
+
+    return oneRegistroSalida;
+}
+
 module.exports = {
-    getAllRegistrosSalida
+    getAllRegistrosSalida,
+    getOneRegistroSalida
 }

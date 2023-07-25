@@ -24,6 +24,32 @@ const getAllUsuarios = async () => {
     return result
 }
 
+const getOneUsuario = async (idUsuario) => {
+    let result;
+    let query = 'Select * from usuarios where idUsuario = ?';
+
+    try {
+        result = await sendQuery(query);
+        result = JSON.stringify(result, null, 2);
+        function sendQuery(query) {
+            return new Promise((resolve, reject) => {
+                mysql.query(query, [idUsuario], (err, result) => {
+                    if(err) {
+                        reject(err)
+                    } else {
+                        resolve(result)
+                    }
+                })
+            })
+        }
+    } catch (error) {
+        console.log(error);
+    }
+
+    return result;
+}
+
 module.exports = {
-    getAllUsuarios
+    getAllUsuarios,
+    getOneUsuario
 }

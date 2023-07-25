@@ -5,6 +5,12 @@ const getAllAdministrador = async () => {
     return allAdministrador;
 }
 
+const getOneAdministrador = async (idAdministrador) => {
+    const oneAdministrador = await AdministradorDB.getOneAdministrador(idAdministrador)
+    return oneAdministrador;
+}
+
 module.exports = {
-    getAllAdministrador
+    getAllAdministrador,
+    getOneAdministrador
 }
