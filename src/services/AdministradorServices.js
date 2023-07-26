@@ -10,7 +10,18 @@ const getOneAdministrador = async (idAdministrador) => {
     return oneAdministrador;
 }
 
+const postNewAdministrador = async(newAdministrador) => {
+
+    const administradorInsert = {
+        ...newAdministrador
+    }
+    
+    const postAdministrador = await AdministradorDB.postNewAdministrador(administradorInsert)
+    return postAdministrador;
+}
+
 module.exports = {
     getAllAdministrador,
-    getOneAdministrador
+    getOneAdministrador,
+    postNewAdministrador
 }

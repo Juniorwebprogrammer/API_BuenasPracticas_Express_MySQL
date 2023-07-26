@@ -6,5 +6,6 @@ const administradorController = require('../../controllers/AdministradorControll
 
 router.get("/", administradorController.getAllAdministrador);
 router.get('/:idAdministrador', administradorController.getOneAdministrador);
+router.post('/', administradorController.postNewAdministrador)
 
 module.exports = router;

@@ -52,7 +52,32 @@ const getOneAdministrador = async (idAdministrador) => {
     return result
 }
 
+const postNewAdministrador = async (newAdministrador) => {
+    let result;
+    let query = "insert into administrador set ?";
+
+    try {
+        result = await sendQuery(query);
+        function sendQuery(query) {
+            return new Promise((resolve, reject) => {
+                mysql.query(query, [newAdministrador], (err, result) => {
+                    if(err){
+                        reject(err)
+                    } else {
+                        resolve(result)
+                    }
+                })
+            })
+        }
+    } catch (error) {
+        console.log(error);
+    }
+
+    return result
+}
+
 module.exports = {
     getAllAdministrador,
-    getOneAdministrador
+    getOneAdministrador,
+    postNewAdministrador
 }
