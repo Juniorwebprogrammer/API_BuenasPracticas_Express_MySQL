@@ -49,7 +49,32 @@ const getOneUsuario = async (idUsuario) => {
     return result;
 }
 
+const postNewUsuario = async (newUsuario) => {
+    let result;
+    let query = 'insert into usuarios set ?';
+
+    try {
+        result = await sendQuery(query);
+        function sendQuery(query){
+            return new Promise((resolve, reject) => {
+                mysql.query(query, [newUsuario], (err, result) => {
+                    if(err) {
+                        reject(err)
+                    } else {
+                        resolve(result)
+                    }
+                })
+            })
+        }
+    } catch (error) {
+        console.log(error)
+    }
+
+    return result
+}
+
 module.exports = {
     getAllUsuarios,
-    getOneUsuario
+    getOneUsuario,
+    postNewUsuario
 }

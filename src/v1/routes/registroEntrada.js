@@ -8,4 +8,6 @@ router.get("/", RegistroEntradaController.getAllRegistroEntrada);
 
 router.get("/:idRegistroEntrada", RegistroEntradaController.getOneRegistroEntrada);
 
+router.post("/", RegistroEntradaController.postNewRegistroEntrada);
+
 module.exports = router

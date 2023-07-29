@@ -14,7 +14,31 @@ const getOneUsuario = async (req,res) => {
     res.status(200).send(oneUsuario);
 }
 
+const postNewUsuario = async (req,res) => {
+    const {body} = req;
+
+    if ( 
+        !body.nombreUsuario || 
+        !body.email_Usuario ||
+        !body.departamento
+    ) {
+        console.log('Datos invalidos');
+        return
+    }
+
+    const newUsuario = {
+        nombreUsuario : body.nombreUsuario,
+        email_Usuario : body.email_Usuario,
+        departamento : body.departamento
+    }
+
+    const createUsuario = UsuariosServices.postNewUsuario(newUsuario);
+
+    res.status(201).send(createUsuario);
+}
+
 module.exports = {
     getAllUsuarios,
-    getOneUsuario
+    getOneUsuario,
+    postNewUsuario
 }

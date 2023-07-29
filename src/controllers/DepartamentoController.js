@@ -12,7 +12,27 @@ const getOneDepartamento = async (req,res) => {
     res.status(200).send(oneDepartamento)
 }
 
+const postNewDepartamento = async (req,res) => {
+    const {body} = req;
+
+    if(
+        !body.nombreDepartamento
+    ) {
+        console.log('no funciona');
+        return
+    }
+
+    const newDepartamento = {
+        nombreDepartamento : body.nombreDepartamento
+    }
+
+    const createDepartamento = DepartamentoServices.postNewDepartamento(newDepartamento);
+
+    res.status(201).send(createDepartamento);
+}
+
 module.exports = {
     getAllDepartamento,
-    getOneDepartamento
+    getOneDepartamento,
+    postNewDepartamento
 }

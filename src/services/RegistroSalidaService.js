@@ -11,7 +11,18 @@ const getOneRegistroSalida = async (idRegistroSalida) => {
     return oneRegistroSalida;
 }
 
+const postNewRegistroSalida = async(newRegistroSalida) => {
+    const RegistroSalidaInsert = {
+        ...newRegistroSalida
+    };
+
+    const postRegistroSalida = await RegistroSalidaDB.postNewRegistroSalida(RegistroSalidaInsert);
+
+    return(postRegistroSalida);
+}
+
 module.exports = {
     getAllRegistrosSalida,
-    getOneRegistroSalida
+    getOneRegistroSalida,
+    postNewRegistroSalida
 }

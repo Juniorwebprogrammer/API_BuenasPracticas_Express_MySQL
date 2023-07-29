@@ -14,7 +14,27 @@ const getOneRegistroSalida = async (req,res) => {
     res.status(200).send(oneRegistroSalida)
 }
 
+const postNewRegistroSalida = async (req,res) => {
+    const {body} = req;
+
+    if(
+        !body.fk_registroSalida_Usuarios
+    ) {
+        console.log("Los datos introducidos no son los correctos");
+        return;
+    }
+
+    const newRegistroSalida = {
+        fk_registroSalida_Usuarios : body.fk_registroSalida_Usuarios
+    }
+
+    const createRegistroSalida = RegistroSalidaServices.postNewRegistroSalida(newRegistroSalida);
+
+    res.status(201).send(createRegistroSalida)
+}
+
 module.exports = {
     getAllRegistroSalida,
-    getOneRegistroSalida
+    getOneRegistroSalida,
+    postNewRegistroSalida
 }

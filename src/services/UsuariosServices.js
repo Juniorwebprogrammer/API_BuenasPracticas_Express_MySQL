@@ -10,7 +10,18 @@ const getOneUsuario = async (idUsuario) => {
     return oneUsuario;
 }
 
+const postNewUsuario = async(newUsuario) => {
+    const UsuarioInsert = {
+        ...newUsuario
+    }
+
+    const postUsuario = await UsuariosDB.postNewUsuario(UsuarioInsert)
+
+    return postUsuario;
+}
+
 module.exports = {
     getAllUsuarios,
-    getOneUsuario
+    getOneUsuario,
+    postNewUsuario
 }

@@ -55,7 +55,32 @@ const getOneRegistroEntrada = async (idRegistroEntrada) => {
     return result
 }
 
+const postNewRegistroEntrada = async (newRegistroEntrada) => {
+    let result;
+    let query = "insert into registroentrada set ?";
+
+    try {
+        result = await sendQuery(query);
+        function sendQuery(query){
+            return new Promise((resolve, reject) => {
+                mysql.query(query, [newRegistroEntrada], (err, result) => {
+                    if(err) {
+                        reject(err)
+                    } else {
+                        resolve(result)
+                    }
+                })
+            })
+        }
+    } catch (error) {
+        console.log(error)
+    }
+
+    return result
+}
+
 module.exports = {
     getAllRegistrosEntrada,
-    getOneRegistroEntrada
+    getOneRegistroEntrada,
+    postNewRegistroEntrada
 }

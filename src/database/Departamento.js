@@ -56,8 +56,33 @@ const getOneDepartamento = async (idDepartamento) => {
     return result;
 }
 
+const postNewDepartamento = async (newDepartamento) => {
+    let result;
+    let query = "insert into departamento set ?";
+
+    try {
+        result = await sendQuery(query);
+        function sendQuery(query){
+            return new Promise((resolve, reject) => {
+                mysql.query(query, [newDepartamento], (err, result) => {
+                    if(err) {
+                        reject(err)
+                    } else {
+                        resolve(result)
+                    }
+                })
+            })
+        }
+    } catch (error) {
+        console.log(error)
+    }
+
+    return result
+}
+
 
 module.exports = {
     getAllDepartamentos,
-    getOneDepartamento
+    getOneDepartamento,
+    postNewDepartamento
 }
