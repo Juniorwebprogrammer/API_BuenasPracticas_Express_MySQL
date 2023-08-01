@@ -20,8 +20,19 @@ const postNewUsuario = async(newUsuario) => {
     return postUsuario;
 }
 
+const putOneUsuario = async(editUsuario, idUsuario) => {
+    const editsUsuario = {
+        ...editUsuario
+    }
+
+    const putUsuario = await UsuariosDB.putOneUsuario(editsUsuario, idUsuario)
+
+    return putUsuario;
+}
+
 module.exports = {
     getAllUsuarios,
     getOneUsuario,
-    postNewUsuario
+    postNewUsuario,
+    putOneUsuario
 }

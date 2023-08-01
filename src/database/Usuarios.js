@@ -73,8 +73,32 @@ const postNewUsuario = async (newUsuario) => {
     return result
 }
 
+const putOneUsuario = async (editsUsuario, idUsuario) => {
+    let result;
+    let query = `Update usuarios set ?  where idUsuario = ${idUsuario}`;
+    try {
+        result = await sendQuery(query);
+        function sendQuery(query){
+            return new Promise((resolve, reject)=>{
+                mysql.query(query, [editsUsuario], (err, result) => {
+                    if(err){
+                        reject(err)
+                    } else {
+                        resolve(result)
+                    }
+                })
+            })
+        }
+    } catch (error) {
+        console.log(error)
+    }
+
+    return result
+}
+
 module.exports = {
     getAllUsuarios,
     getOneUsuario,
-    postNewUsuario
+    postNewUsuario,
+    putOneUsuario
 }

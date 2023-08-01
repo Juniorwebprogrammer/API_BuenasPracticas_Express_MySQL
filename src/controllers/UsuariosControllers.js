@@ -37,8 +37,33 @@ const postNewUsuario = async (req,res) => {
     res.status(201).send(createUsuario);
 }
 
+const putOneUsuario = async (req,res) => {
+    const {idUsuario} = req.params;
+    const {body} = req;
+
+    if(
+        !body.nombreUsuario ||
+        !body.email_Usuario ||
+        !body.departamento
+    ) {
+        console.log('Rellene los datos correctamente')
+        return
+    }
+
+    const editUsuario = {
+        nombreUsuario : body.nombreUsuario,
+        email_Usuario : body.email_Usuario,
+        departamento : body.departamento
+    }
+
+    const putUsuario = UsuariosServices.putOneUsuario(editUsuario, idUsuario);
+
+    res.status(200).send(putUsuario);
+}
+
 module.exports = {
     getAllUsuarios,
     getOneUsuario,
-    postNewUsuario
+    postNewUsuario,
+    putOneUsuario
 }
