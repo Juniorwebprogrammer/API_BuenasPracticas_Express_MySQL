@@ -20,8 +20,14 @@ const postNewDepartamento = async(newDepartamento) => {
     return postDepartamento;
 }
 
+const putOneDepartamento = async(nombreDepartamento, idDepartamento) => {
+    const putDepartamento = await DepartamentoDB.putOneDepartamento(nombreDepartamento, idDepartamento)
+    return putDepartamento
+}
+
 module.exports = {
     getAllDepartamento,
     getOneDepartamento,
-    postNewDepartamento
+    postNewDepartamento,
+    putOneDepartamento
 }

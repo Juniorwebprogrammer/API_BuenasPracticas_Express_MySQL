@@ -80,9 +80,36 @@ const postNewDepartamento = async (newDepartamento) => {
     return result
 }
 
+const putOneDepartamento = async (nombreDepartamento, idDepartamento) => {
+    let result;
+    
+    let query = `update departamento set nombreDepartamento = ? where idDepartamento = ${idDepartamento}`;
+
+    try {
+        result = await sendQuery(query);
+        function sendQuery(query){
+            return new Promise((resolve, reject) => {
+                mysql.query(query, [nombreDepartamento], (err, result) => {
+                    if(err){
+                        reject (err)
+                    } else {
+                        resolve(result)
+                    }
+                })
+            })
+        }
+    } catch (error) {
+        console.log(error)
+    }
+
+    return result;
+
+}
+
 
 module.exports = {
     getAllDepartamentos,
     getOneDepartamento,
-    postNewDepartamento
+    postNewDepartamento,
+    putOneDepartamento
 }

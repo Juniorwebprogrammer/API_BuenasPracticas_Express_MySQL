@@ -31,8 +31,27 @@ const postNewDepartamento = async (req,res) => {
     res.status(201).send(createDepartamento);
 }
 
+const putOneDepartamento = async (req,res) => {
+    const {idDepartamento,} = req.params;
+    const {body} = req
+
+    if(
+        !body.nombreDepartamento
+    ) {
+        console.log(error)
+        return
+    }
+
+    const nombreDepartamento = body.nombreDepartamento
+
+    const putDepartamento = await DepartamentoServices.putOneDepartamento(nombreDepartamento, idDepartamento);
+
+    res.status(200).send(putDepartamento);
+}
+
 module.exports = {
     getAllDepartamento,
     getOneDepartamento,
-    postNewDepartamento
+    postNewDepartamento,
+    putOneDepartamento
 }
