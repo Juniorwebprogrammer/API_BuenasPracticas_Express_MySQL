@@ -96,9 +96,34 @@ const putOneUsuario = async (editsUsuario, idUsuario) => {
     return result
 }
 
+const deleteUsuarios = async (idUsuario) => {
+    let result;
+    let query = "Delete from usuarios where idUsuario = ?";
+
+    try {
+        result = await sendQuery(query);
+        function sendQuery(query) {
+            return new Promise((resolve, reject) => {
+                mysql.query(query, [idUsuario], (err, result) => {
+                    if(err) {
+                        reject(err)
+                    } else {
+                        resolve(result)
+                    }
+                })
+            })
+        }
+    } catch (error) {
+        console.log(error)
+    }
+
+    return result
+}
+
 module.exports = {
     getAllUsuarios,
     getOneUsuario,
     postNewUsuario,
-    putOneUsuario
+    putOneUsuario,
+    deleteUsuarios
 }

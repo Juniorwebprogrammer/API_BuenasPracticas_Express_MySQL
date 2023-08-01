@@ -30,9 +30,15 @@ const putOneUsuario = async(editUsuario, idUsuario) => {
     return putUsuario;
 }
 
+const deleteUsuario = async (idUsuario) => {
+    const deleteUsario = await UsuariosDB.deleteUsuarios(idUsuario);
+    return deleteUsario
+}
+
 module.exports = {
     getAllUsuarios,
     getOneUsuario,
     postNewUsuario,
-    putOneUsuario
+    putOneUsuario,
+    deleteUsuario
 }

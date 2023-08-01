@@ -61,9 +61,16 @@ const putOneUsuario = async (req,res) => {
     res.status(200).send(putUsuario);
 }
 
+const deleteUsuario = async (req,res) => {
+    const {idUsuario} = req.params;
+    const deleteUsuario = UsuariosServices.deleteUsuario(idUsuario)
+    res.status(200).send(deleteUsuario);
+}
+
 module.exports = {
     getAllUsuarios,
     getOneUsuario,
     postNewUsuario,
-    putOneUsuario
+    putOneUsuario,
+    deleteUsuario
 }
