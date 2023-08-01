@@ -106,10 +106,34 @@ const putOneDepartamento = async (nombreDepartamento, idDepartamento) => {
 
 }
 
+const deleteDepartamento = async (idDepartamento) => {
+    let result;
+    let query = "delete from departamento where idDepartamento = ?"
+    try {
+        result = await sendQuery(query);
+        function sendQuery(query){
+            return new Promise((resolve, reject)=> {
+                mysql.query(query, [idDepartamento], (err, result) => {
+                    if(err) {
+                        reject(err)
+                    } else {
+                        resolve(result)
+                    }
+                })
+            })
+        }
+    } catch (error) {
+        console.log(error)
+    }
+
+    return result
+}
+
 
 module.exports = {
     getAllDepartamentos,
     getOneDepartamento,
     postNewDepartamento,
-    putOneDepartamento
+    putOneDepartamento,
+    deleteDepartamento
 }

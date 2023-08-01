@@ -25,9 +25,15 @@ const putOneDepartamento = async(nombreDepartamento, idDepartamento) => {
     return putDepartamento
 }
 
+const deleteDepartamento = async (idDepartamento) => {
+    const deleteDepartamento = await DepartamentoDB.deleteDepartamento(idDepartamento)
+    return deleteDepartamento
+}
+
 module.exports = {
     getAllDepartamento,
     getOneDepartamento,
     postNewDepartamento,
-    putOneDepartamento
+    putOneDepartamento,
+    deleteDepartamento
 }

@@ -32,7 +32,7 @@ const postNewDepartamento = async (req,res) => {
 }
 
 const putOneDepartamento = async (req,res) => {
-    const {idDepartamento,} = req.params;
+    const {idDepartamento} = req.params;
     const {body} = req
 
     if(
@@ -49,9 +49,17 @@ const putOneDepartamento = async (req,res) => {
     res.status(200).send(putDepartamento);
 }
 
+const deleteDepartamento = async (req,res) => {
+    const {idDepartamento} = req.params;
+    const deleteDepartamento = await DepartamentoServices.deleteDepartamento(idDepartamento)
+
+    res.status(200).send(deleteDepartamento);
+}
+
 module.exports = {
     getAllDepartamento,
     getOneDepartamento,
     postNewDepartamento,
-    putOneDepartamento
+    putOneDepartamento,
+    deleteDepartamento
 }

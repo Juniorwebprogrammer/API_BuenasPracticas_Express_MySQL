@@ -8,5 +8,6 @@ router.get("/", departamentoController.getAllDepartamento);
 router.get("/:idDepartamento", departamentoController.getOneDepartamento)
 router.post("/", departamentoController.postNewDepartamento);
 router.put('/:idDepartamento', departamentoController.putOneDepartamento);
+router.delete('/:idDepartamento', departamentoController.deleteDepartamento);
 
 module.exports = router
