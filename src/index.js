@@ -21,8 +21,6 @@ const v1historicoRouter = require('./v1/routes/historico')
 
 // Configuraciones
 
-
-
 // Middelwares
 
 app.use(morgan('dev'));
@@ -46,4 +44,4 @@ app.use('/api/v1/historicos', v1historicoRouter);
 
 // Servidor
 
-app.listen(Port, console.log(`🚀Server on port ${Port}`));
+app.listen(Port, console.log(`🐈Server on port ${Port}🐰`));
