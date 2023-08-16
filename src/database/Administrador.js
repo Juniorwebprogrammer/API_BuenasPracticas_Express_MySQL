@@ -79,5 +79,5 @@ const postNewAdministrador = async (newAdministrador) => {
 module.exports = {
     getAllAdministrador,
     getOneAdministrador,
-    postNewAdministrador
+    postNewAdministrador,
 }

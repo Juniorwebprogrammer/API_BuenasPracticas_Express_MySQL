@@ -9,12 +9,6 @@ const app = express();
 
 const Port = process.env.PORT || 4000;
 
-const indexViewRouter = require('./routes/index');
-
-const loginViewRouter = require('./routes/login');
-
-const administradorViewRouter = require('./routes/administrador');
-
 const v1UsuarioRouter = require("./v1/routes/usuarios");
 
 const v1AdministradorRouter = require('./v1/routes/administrador');
@@ -27,12 +21,6 @@ const v1RegistroSalidaRouter = require('./v1/routes/registroSalida');
 
 const v1historicoRouter = require('./v1/routes/historico')
 
-// Configuraciones
-
-app.set('view engine', 'ejs');
-
-app.set('views', __dirname + '/views');
-
 // Middelwares
 
 app.use(morgan('dev'));
@@ -41,15 +29,7 @@ app.use(express.json()); // body-parser
 
 app.use(cors());
 
-app.use(express.static(path.join(__dirname, 'public')));
-
 // Routes
-
-app.use('/', indexViewRouter);
-
-app.use('/administrador', administradorViewRouter);
-
-app.use('/login', loginViewRouter);
 
 app.use('/api/v1/usuarios', v1UsuarioRouter);
 
