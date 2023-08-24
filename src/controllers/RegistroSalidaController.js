@@ -14,6 +14,14 @@ const getOneRegistroSalida = async (req,res) => {
     res.status(200).send(oneRegistroSalida)
 }
 
+const getOneRegistroSalidaUser = async (req,res) => {
+    const {fk_registroSalida_Usuarios} = req.params;
+
+    const oneRegistroSalida = await RegistroSalidaServices.getOneRegistroSalidaUser(fk_registroSalida_Usuarios);
+
+    res.status(200).send(oneRegistroSalida)
+}
+
 const postNewRegistroSalida = async (req,res) => {
     const {body} = req;
 
@@ -36,5 +44,6 @@ const postNewRegistroSalida = async (req,res) => {
 module.exports = {
     getAllRegistroSalida,
     getOneRegistroSalida,
+    getOneRegistroSalidaUser,
     postNewRegistroSalida
 }

@@ -55,6 +55,33 @@ const getOneRegistroEntrada = async (idRegistroEntrada) => {
     return result
 }
 
+const getOneRegistroEntradaUser = async (fk_registroEntrada_Usuarios) => {
+
+    let result;
+
+    let query = 'Select * from registroEntrada where fk_registroEntrada_Usuarios = ?';
+
+    try {
+        result = await sendQuery(query);
+        result = JSON.stringify(result, null, 2);
+        function sendQuery(query) {
+            return new Promise((resolve, reject) => {
+                mysql.query(query, [fk_registroEntrada_Usuarios], (err, result) => {
+                    if(err){
+                        reject(err)
+                    } else {
+                        resolve(result)
+                    }
+                })
+            })
+        }
+    } catch (error) {
+        console.log(error)
+    }
+
+    return result
+}
+
 const postNewRegistroEntrada = async (newRegistroEntrada) => {
     let result;
     let query = "insert into registroentrada set ?";
@@ -82,5 +109,6 @@ const postNewRegistroEntrada = async (newRegistroEntrada) => {
 module.exports = {
     getAllRegistrosEntrada,
     getOneRegistroEntrada,
+    getOneRegistroEntradaUser,
     postNewRegistroEntrada
 }

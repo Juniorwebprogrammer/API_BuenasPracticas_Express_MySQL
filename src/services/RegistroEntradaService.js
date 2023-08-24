@@ -10,6 +10,12 @@ const getOneRegistroEntrada = async (idRegistroEntrada) => {
     return oneRegistroEntrada;
 }
 
+const getOneRegistroEntradaUser = async (fk_registroEntrada_Usuarios) => {
+    const oneRegistroEntradaUserid = await RegistroEntradaDB.getOneRegistroEntradaUser(fk_registroEntrada_Usuarios);
+
+    return oneRegistroEntradaUserid
+}
+
 const postNewRegistroEntrada = async(newRegistroEntrada) => {
     const registroEntradaInsert = {
         ...newRegistroEntrada
@@ -23,5 +29,6 @@ const postNewRegistroEntrada = async(newRegistroEntrada) => {
 module.exports = {
     getAllRegistrosEntrada,
     getOneRegistroEntrada,
+    getOneRegistroEntradaUser,
     postNewRegistroEntrada
 }

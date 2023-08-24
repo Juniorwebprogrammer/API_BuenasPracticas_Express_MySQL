@@ -6,7 +6,9 @@ const RegistroSalidaController = require('../../controllers/RegistroSalidaContro
 
 router.get("/", RegistroSalidaController.getAllRegistroSalida);
 
-router.get("/:idRegistroSalida", RegistroSalidaController.getOneRegistroSalida);
+// router.get("/:idRegistroSalida", RegistroSalidaController.getOneRegistroSalida);
+
+router.get("/:fk_registroSalida_Usuarios", RegistroSalidaController.getOneRegistroSalidaUser);
 
 router.post("/", RegistroSalidaController.postNewRegistroSalida);
 

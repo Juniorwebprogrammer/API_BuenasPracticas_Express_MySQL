@@ -14,6 +14,15 @@ const getOneRegistroEntrada = async (req,res) => {
     res.status(200).send(oneRegistroEntrada);
 }
 
+const getOneRegistroEntradaUser = async (req,res) => {
+
+    const {fk_registroEntrada_Usuarios} = req.params;
+
+    const oneRegistroEntradaUserid = await RegistroEntradaServices.getOneRegistroEntradaUser(fk_registroEntrada_Usuarios);
+
+    res.status(200).send(oneRegistroEntradaUserid);
+}
+
 const postNewRegistroEntrada = async (req,res) => {
     const {body} = req;
 
@@ -36,5 +45,6 @@ const postNewRegistroEntrada = async (req,res) => {
 module.exports = {
     getAllRegistroEntrada,
     getOneRegistroEntrada,
+    getOneRegistroEntradaUser,
     postNewRegistroEntrada
 }

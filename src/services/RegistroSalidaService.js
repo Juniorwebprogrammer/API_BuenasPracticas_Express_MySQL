@@ -11,6 +11,12 @@ const getOneRegistroSalida = async (idRegistroSalida) => {
     return oneRegistroSalida;
 }
 
+const getOneRegistroSalidaUser = async (fk_registroSalida_Usuarios) => {
+    const oneRegistroSalida = await RegistroSalidaDB.getOneRegistroSalidaUser(fk_registroSalida_Usuarios);
+
+    return oneRegistroSalida;
+}
+
 const postNewRegistroSalida = async(newRegistroSalida) => {
     const RegistroSalidaInsert = {
         ...newRegistroSalida
@@ -24,5 +30,6 @@ const postNewRegistroSalida = async(newRegistroSalida) => {
 module.exports = {
     getAllRegistrosSalida,
     getOneRegistroSalida,
+    getOneRegistroSalidaUser,
     postNewRegistroSalida
 }
